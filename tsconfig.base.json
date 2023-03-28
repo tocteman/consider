@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@consider/common-ui": ["libs/common-ui/src/index.ts"]
+      "@consider/common-ui": ["libs/common-ui/src/index.ts"],
+      "@consider/projects": ["libs/projects/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
