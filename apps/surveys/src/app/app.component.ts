@@ -8,5 +8,5 @@ import { exampleProjects } from '@consider/projects'
 })
 export class AppComponent {
   title = 'surveys';
-  products = exampleProjects
+  projects = exampleProjects
 }
