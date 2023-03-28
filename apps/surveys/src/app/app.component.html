@@ -1,1 +1,10 @@
-<consider-nx-welcome></consider-nx-welcome> <router-outlet></router-outlet>
+<consider-banner title="Survey app">
+</consider-banner>
+
+<ul>
+  <li *ngFor="let project of projects">
+    <h3>{{project.name}}</h3>
+    <p> status: {{project.status}} </p>
+  </li>
+</ul>
+

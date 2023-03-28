@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { exampleProjects } from '@consider/projects'
 
 @Component({
   selector: 'consider-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'surveys';
+  products = exampleProjects
 }
