@@ -1,13 +1,18 @@
 <consider-banner title="Survey app">
 </consider-banner>
 
-<ul>
-  <li *ngFor="let project of projects">
-    <button mat-raised-button color="primary">
-      Just a button
-    </button>
-    <h3>{{project.name}}</h3>
-    <p> status: {{project.status}} </p>
-  </li>
-</ul>
-
+<mat-grid-list cols="2" rowHeight="4:1">
+  <mat-grid-tile *ngFor="let project of projects">
+    <mat-card >
+      <mat-card-content>
+        <button mat-raised-button color="primary">
+          Just a button
+        </button>
+        <mat-card-title>
+          <h3>{{project.name}}</h3>
+        </mat-card-title>
+        <p> status: {{project.status}} </p>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

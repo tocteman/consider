@@ -5,16 +5,16 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button'
+import { MaterialModule } from '@consider/material'
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     CommonUiModule,
+    MaterialModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     BrowserAnimationsModule,
-    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],
