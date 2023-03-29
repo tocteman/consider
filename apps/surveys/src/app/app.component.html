@@ -3,6 +3,9 @@
 
 <ul>
   <li *ngFor="let project of projects">
+    <button mat-raised-button color="primary">
+      Just a button
+    </button>
     <h3>{{project.name}}</h3>
     <p> status: {{project.status}} </p>
   </li>
