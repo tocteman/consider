@@ -4,6 +4,7 @@ import { CommonUiModule } from '@consider/common-ui'
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -11,6 +12,7 @@ import { appRoutes } from './app.routes';
     BrowserModule,
     CommonUiModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
