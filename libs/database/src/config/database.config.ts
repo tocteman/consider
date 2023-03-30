@@ -7,17 +7,17 @@ interface DatabaseConfigAttributes {
 
 const development: DatabaseConfigAttributes = {
   dialect: 'sqlite',
-  storage: './src/database/consider_development.db',
+  storage: './libs/database/consider_development.db',
 };
 
 const test: DatabaseConfigAttributes = {
   dialect: 'sqlite',
-  storage: './src/database/consider_test.db',
+  storage: './libs/database/consider_test.db',
 };
 
 const production: DatabaseConfigAttributes = {
   dialect: 'sqlite',
-  storage: './src/database/consider_production.db',
+  storage: './libs/database/consider_production.db',
 };
 
 export { development, test, production };
