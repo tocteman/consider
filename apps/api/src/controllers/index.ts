@@ -1,6 +1,7 @@
 import { homeController } from './homeController'
 import { questionController } from './questionController'
+import { projectController } from './projectController'
 
 export {
-  homeController, questionController
+  homeController, questionController, projectController
 }
