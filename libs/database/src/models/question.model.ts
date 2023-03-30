@@ -1,6 +1,6 @@
 import { BelongsTo, BelongsToMany, Column, CreatedAt, DataType, ForeignKey, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
 import { Question } from '@consider/interfaces';
-import { QuestionnaireModel } from './questionnarie.model'
+import { QuestionnaireModel } from './questionnaire.model'
 import { QuestionQuestionnaireRelationModel } from './question_questionnaire_relation.model'
 import { UserModel } from './user.model'
 
@@ -21,7 +21,7 @@ export class QuestionModel extends Model implements Question {
 
   @Column(DataType.INTEGER)
   order: number;
-   @ForeignKey(() => UserModel)
+  @ForeignKey(() => UserModel)
   @Column({ field: 'created_by', type: DataType.INTEGER })
   created_by: number;
 

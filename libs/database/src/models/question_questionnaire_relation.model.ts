@@ -1,7 +1,7 @@
 
 import { Column, DataType, ForeignKey, Model, PrimaryKey, Table } from 'sequelize-typescript';
 import { QuestionModel } from './question.model';
-import { QuestionnaireModel } from './questionnarie.model';
+import { QuestionnaireModel } from './questionnaire.model';
 
 @Table({ tableName: 'question_questionnaire_relations' })
 export class QuestionQuestionnaireRelationModel extends Model {
