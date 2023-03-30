@@ -1,0 +1,17 @@
+{
+  "name": "state",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/state/src",
+  "prefix": "consider",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/state/**/*.ts", "libs/state/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}
