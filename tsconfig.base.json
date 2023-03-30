@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@consider/common-ui": ["libs/common-ui/src/index.ts"],
+      "@consider/interfaces": ["libs/interfaces/src/index.ts"],
       "@consider/material": ["libs/material/src/index.ts"],
       "@consider/projects": ["libs/projects/src/index.ts"],
       "@consider/state": ["libs/state/src/index.ts"]
