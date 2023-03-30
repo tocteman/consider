@@ -2,7 +2,7 @@ import { Column, CreatedAt, DataType, Model, PrimaryKey, Table, UpdatedAt } from
 import { Project } from '@consider/interfaces'
 
 @Table({ tableName: 'projects' })
-export class ProjectModel extends Model{
+export class ProjectModel extends Model implements Project{
   @PrimaryKey
   @Column({ type: DataType.INTEGER, autoIncrement: true })
   declare id: number;
