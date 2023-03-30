@@ -1,21 +1,28 @@
-// libs/database/src/models/project.model.ts
-
 import { Column, CreatedAt, DataType, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
 import { Project } from '@consider/interfaces'
 
 @Table({ tableName: 'projects' })
-export class ProjectModel extends Model implements Project {
+export class ProjectModel extends Model{
   @PrimaryKey
   @Column({ type: DataType.INTEGER, autoIncrement: true })
-  id: number;
+  declare id: number;
 
-  @Column(DataType.STRING)
+  @Column({
+    field: "name", 
+    type: DataType.STRING,
+    allowNull: false
+  })
   name: string;
 
-  @Column(DataType.STRING)
+  @Column({field: "description", type: DataType.STRING})
   description: string;
 
-  @Column(DataType.ENUM('draft', 'active', 'archived'))
+  @Column({
+    field: "status",
+    type: DataType.ENUM('draft', 'active', 'archived'),
+    defaultValue: "draft",
+    allowNull: false
+  })
   status: 'draft' | 'active' | 'archived';
 
   @Column({ field: 'owner_id', type: DataType.INTEGER })
@@ -35,4 +42,5 @@ export class ProjectModel extends Model implements Project {
   @Column({ field: 'updated_at', type: DataType.DATE })
   updated_at: Date;
 }
+
 
