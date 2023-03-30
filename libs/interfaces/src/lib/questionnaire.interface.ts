@@ -1,8 +1,8 @@
 export interface Questionnaire {
-  id: string; 
+  id: number; 
   name: string;
-  project_id: string;
-  created_by: string; 
+  project_id: number;
+  created_by: number; 
   created_at: Date; 
   updated_at: Date; 
 }

@@ -1,10 +1,10 @@
 export interface Question {
-  id: string; 
+  id: number; 
   question: string;
   response_type: 'numeric' | 'string';
   intended_for: 'clients' | 'teammates' | 'general';
   order: number; 
-  created_by: string; 
+  created_by: number; 
   created_at: Date; 
   updated_at: Date; 
 }

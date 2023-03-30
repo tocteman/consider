@@ -1,5 +1,5 @@
 export interface User {
-  id: string; 
+  id: number; 
   type: 'client' | 'teammate' | 'manager';
   name: string;
   password: string;
