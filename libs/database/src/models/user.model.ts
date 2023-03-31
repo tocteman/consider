@@ -1,5 +1,7 @@
-import { Column, CreatedAt, DataType, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
+import { Column, CreatedAt, DataType, HasMany, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
 import { User } from '@consider/interfaces';
+import { AssignmentModel } from './assignment.model';
+import { ParticipationModel } from './participation.model';
 
 @Table({ tableName: 'users' })
 export class UserModel extends Model implements User {
@@ -29,5 +31,11 @@ export class UserModel extends Model implements User {
   @UpdatedAt
   @Column({ field: 'updated_at', type: DataType.DATE })
   updated_at: Date;
+
+  @HasMany(() => AssignmentModel)
+  assignments: AssignmentModel[];
+
+  @HasMany(() => ParticipationModel)
+  participations: ParticipationModel[];
 }
 

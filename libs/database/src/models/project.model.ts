@@ -1,5 +1,6 @@
-import { Column, CreatedAt, DataType, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
+import { Column, CreatedAt, DataType, HasMany, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
 import { Project } from '@consider/interfaces'
+import { ParticipationModel } from './participation.model';
 
 @Table({ tableName: 'projects' })
 export class ProjectModel extends Model implements Project{
@@ -41,6 +42,10 @@ export class ProjectModel extends Model implements Project{
   @UpdatedAt
   @Column({ field: 'updated_at', type: DataType.DATE })
   updated_at: Date;
+
+  @HasMany(() => ParticipationModel)
+  participations: ParticipationModel[];
+
 }
 
 

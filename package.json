@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "db:migrate": "ts-node -O '{\"module\":\"CommonJS\"}' node_modules/.bin/sequelize db:migrate"
+    "db:migrate": "ts-node -O '{\"module\":\"CommonJS\"}' node_modules/.bin/sequelize db:migrate",
+    "db:seed": "ts-node -O '{\"module\":\"CommonJS\"}' node_modules/.bin/sequelize db:seed:all"
   },
   "private": true,
   "dependencies": {

@@ -1,5 +1,6 @@
-import { BelongsToMany, Column, CreatedAt, DataType, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
+import { BelongsToMany, Column, CreatedAt, DataType, HasMany, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
 import { Questionnaire} from '@consider/interfaces';
+import {AssignmentModel} from './assignment.model';
 import {QuestionModel} from './question.model';
 import {QuestionQuestionnaireRelationModel} from './question_questionnaire_relation.model';
 
@@ -28,4 +29,7 @@ export class QuestionnaireModel extends Model implements Questionnaire {
 
   @BelongsToMany(() => QuestionModel, () => QuestionQuestionnaireRelationModel)
   questions: QuestionModel[];
+
+  @HasMany(() => AssignmentModel)
+  assignments: AssignmentModel
 }
