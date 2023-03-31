@@ -1,0 +1,57 @@
+export interface Answer {
+  id: number;
+  numeric_answer: number | null;
+  string_answer: string | null;
+  user_id: number;
+  question_id: number;
+  questionnaire_id?: number;
+  created_at: Date;
+}
+
+export interface Project {
+  id: number; 
+  name: string;
+  description: string;
+  status: 'draft' | 'active' | 'archived'; 
+  owner_id: number; 
+  start_date: Date; 
+  end_date: Date; 
+  created_at: Date; 
+  updated_at: Date; 
+}
+
+
+export interface QuestionQuestionnaireRelation {
+  id: string; // unique identifier
+  question_id: string;
+  questionnaire_id: string;
+}
+
+export interface Question {
+  id: number; 
+  question: string;
+  response_type: 'numeric' | 'string';
+  intended_for: 'clients' | 'teammates' | 'general';
+  order: number; 
+  created_by: number; 
+  created_at: Date; 
+  updated_at: Date; 
+}
+export interface Questionnaire {
+  id: number; 
+  name: string;
+  project_id: number;
+  created_by: number; 
+  created_at: Date; 
+  updated_at: Date; 
+}
+export interface User {
+  id: number; 
+  type: 'client' | 'teammate' | 'manager';
+  name: string;
+  password: string;
+  email: string; 
+  phone: string; 
+  created_at: Date; 
+  updated_at: Date; 
+}
