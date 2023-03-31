@@ -1,9 +1,14 @@
 import { UserModel } from '../models/user.model';
 import { User } from '@consider/interfaces';
+import bcrypt from 'bcrypt'
 
 export class UserRepository {
-  async create(input: User): Promise<UserModel> {
-    return UserModel.create(input);
+  async create(user: Omit<User, 'id' | 'created_at' | 'updated_at'>): Promise<UserModel> {
+
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(user.password, salt)
+    const newUser = {...user, password: hashedPassword}
+    return UserModel.create(newUser);
   }
 
   async getAll(): Promise<UserModel[]> {
@@ -12,6 +17,10 @@ export class UserRepository {
 
   async getById(id: number): Promise<UserModel | null> {
     return UserModel.findOne({ where: { id } });
+  }
+
+  async getByEmail(email: string): Promise<UserModel | null>{
+    return UserModel.findOne({where: {email}})
   }
 
   async update(id: number, updates: Partial<User>): Promise<UserModel | null> {
