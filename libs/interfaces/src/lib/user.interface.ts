@@ -1,4 +1,4 @@
-import {Assignment} from "./assignment.interface";
+import {Submission} from "./submission.interface";
 import {Participation} from "./participation.interface";
 
 export interface User {

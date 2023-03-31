@@ -1,4 +1,4 @@
-export interface Assignment {
+export interface Submission {
   id: number;
   user_id: number;
   questionnaire_id: number;

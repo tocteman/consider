@@ -84,8 +84,6 @@ export class QuestionnaireCreatorComponent implements OnInit {
       created_at: new Date(),
       updated_at: new Date()
     }
-
-
   }
 
   onSubmit() {

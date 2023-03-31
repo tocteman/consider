@@ -12,8 +12,8 @@ import {
 import { UserModel } from './user.model';
 import { QuestionnaireModel } from './questionnaire.model';
 
-@Table({ tableName: 'assignments', timestamps: false })
-export class AssignmentModel extends Model {
+@Table({ tableName: 'submissions', timestamps: false })
+export class SubmissionModel extends Model {
   @PrimaryKey
   @Column({ type: DataType.INTEGER, autoIncrement: true })
   id: number;

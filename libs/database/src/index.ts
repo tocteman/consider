@@ -5,7 +5,7 @@ import * as databaseConfig from './config/database.config';
 import {UserRepository} from './repos/user.repository';
 import {UserModel} from './models/user.model';
 import {ParticipationModel} from './models/participation.model';
-import {AssignmentModel} from './models/assignment.model';
+import {SubmissionModel} from './models/submission.model';
 import {QuestionModel} from './models/question.model';
 import {QuestionnaireModel} from './models/questionnaire.model';
 import {AnswerModel} from './models/answer.model';
@@ -21,7 +21,7 @@ const sequelize = new Sequelize({
     ProjectModel,
     UserModel,
     ParticipationModel,
-    AssignmentModel,
+    SubmissionModel,
     QuestionModel,
     QuestionnaireModel,
     AnswerModel,
