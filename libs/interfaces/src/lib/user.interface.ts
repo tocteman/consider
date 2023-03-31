@@ -1,3 +1,6 @@
+import {Assignment} from "./assignment.interface";
+import {Participation} from "./participation.interface";
+
 export interface User {
   id: number; 
   type: 'client' | 'teammate' | 'manager';
