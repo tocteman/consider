@@ -1,0 +1,31 @@
+<form [formGroup]="questionnaireForm" (ngSubmit)="onSubmit()" class="m-8 flex flex-col space-y-4 min-w-[40vw]">
+  <div formArrayName="associatedQuestions" *ngIf="associatedQuestions.length > 0">
+    <div *ngFor="let question of associatedQuestions.controls; index as i" [formGroupName]="i">
+      <p>{{question.value.label}}</p>
+      <ng-container *ngIf="question.value.response_type === 'string'">
+        <mat-form-field appearance="fill">
+          <mat-label>Fill out your answer</mat-label>
+          <input matInput formControlName="answer" />
+        </mat-form-field>
+      </ng-container>
+      <ng-container *ngIf="question.value.response_type === 'numeric'">
+          <p>{{question.value.answer}}</p>
+          <mat-slider
+            thumbLabel
+            min="1"
+            max="10"
+            tickInterval="1"
+          >
+          <input
+            matSliderThumb
+            formControlName="answer"
+          />
+          </mat-slider>
+      </ng-container>
+    </div>
+  </div>
+
+  <button mat-raised-button type="submit" color="primary" class="max-w-xs" size="large">
+    Enviar
+  </button>
+</form>

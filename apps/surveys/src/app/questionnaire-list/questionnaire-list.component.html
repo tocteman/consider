@@ -1,0 +1,8 @@
+<main class="p-4">
+<h2 class="font-3xl font-bold">Questionnaires</h2>
+<ul class="flex flex-col space-y-4" *ngIf="questionnaires.length > 0">
+  <a *ngFor="let q of questionnaires" class="underline hover:text-gray-900" href="/questionnaires/{{q.id}}">
+    {{q.id}} {{q.name}}
+  </a>
+</ul>
+</main>

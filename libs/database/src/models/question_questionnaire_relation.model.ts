@@ -3,7 +3,7 @@ import { Column, DataType, ForeignKey, Model, PrimaryKey, Table } from 'sequeliz
 import { QuestionModel } from './question.model';
 import { QuestionnaireModel } from './questionnaire.model';
 
-@Table({ tableName: 'question_questionnaire_relations' })
+@Table({ tableName: 'question_questionnaire_relations', timestamps: false })
 export class QuestionQuestionnaireRelationModel extends Model {
   @PrimaryKey
   @Column({ type: DataType.INTEGER, autoIncrement: true })

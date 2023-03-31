@@ -13,7 +13,7 @@ import { QuestionModel } from './question.model';
 import { UserModel } from './user.model';
 import { QuestionnaireModel } from './questionnaire.model';
 
-@Table({ tableName: 'answers' })
+@Table({ tableName: 'answers', timestamps: false })
 export class AnswerModel extends Model implements Answer {
   @PrimaryKey
   @Column({ type: DataType.INTEGER, autoIncrement: true })
@@ -37,7 +37,6 @@ export class AnswerModel extends Model implements Answer {
   @Column({ type: DataType.INTEGER, allowNull: true })
   questionnaire_id?: number;
 
-  @CreatedAt
   @Column({ field: 'created_at', type: DataType.DATE })
   created_at: Date;
 

@@ -11,6 +11,7 @@ import {QuestionnaireModel} from './models/questionnaire.model';
 import {AnswerModel} from './models/answer.model';
 import {QuestionQuestionnaireRelationModel} from './models/question_questionnaire_relation.model';
 import {QuestionnaireRepository} from './repos/questionnaire.repository';
+import {QuestionRepository} from './repos/question.repository';
 
 const environment = process.env.NODE_ENV || 'development';
 const config = databaseConfig[environment];
@@ -48,9 +49,15 @@ function createQuestionnaireRepository(): QuestionnaireRepository {
   repo['sequelize'] = sequelize
   return repo
 }
+function createQuestionRepository(): QuestionRepository {
+  const repo = new QuestionRepository()
+  repo['sequelize'] = sequelize
+  return repo
+}
 
 export {
   createProjectRepository,
   createUsersRepository,
-  createQuestionnaireRepository
+  createQuestionnaireRepository,
+  createQuestionRepository
 }

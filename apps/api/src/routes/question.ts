@@ -4,9 +4,8 @@ import { questionController } from '../controllers';
 export function createQuestionRouter(): express.Router {
   const router = express.Router();
 
-  // Define routes and map them to controller methods
-  router.get('/', questionController.showQuestion);
-
+  router.get('/', questionController.getAllQuestions);
+  router.post('/', questionController.createQuestion)
   return router;
 }
 

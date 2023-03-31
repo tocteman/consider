@@ -28,9 +28,10 @@ export class QuestionnaireRepository {
       }
 
       await createdQuestionnaire.$set('questions', questionIds);
-      const relations = questionIds.map((questionId) => ({
+      const relations = questionIds.map((questionId, i) => ({
         question_id: questionId,
         questionnaire_id: createdQuestionnaire.id,
+        order: i
       }));
       await QuestionQuestionnaireRelationModel.bulkCreate(relations);
     }

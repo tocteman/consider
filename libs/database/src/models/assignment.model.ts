@@ -12,7 +12,7 @@ import {
 import { UserModel } from './user.model';
 import { QuestionnaireModel } from './questionnaire.model';
 
-@Table({ tableName: 'assignments' })
+@Table({ tableName: 'assignments', timestamps: false })
 export class AssignmentModel extends Model {
   @PrimaryKey
   @Column({ type: DataType.INTEGER, autoIncrement: true })
@@ -29,11 +29,9 @@ export class AssignmentModel extends Model {
   @Column({ type: DataType.BOOLEAN, defaultValue: false })
   completed: boolean;
 
-  @CreatedAt
   @Column({ field: 'created_at', type: DataType.DATE })
   created_at: Date;
 
-  @UpdatedAt
   @Column({ field: 'updated_at', type: DataType.DATE })
   updated_at: Date;
 

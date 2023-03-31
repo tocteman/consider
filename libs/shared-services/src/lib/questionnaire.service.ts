@@ -12,6 +12,7 @@ export class QuestionnaireService {
   constructor(private apiService: ApiService) {}
 
   getQuestionnaires(): Observable<Questionnaire[]> {
+    console.log(this.endpoint)
     return this.apiService.get<Questionnaire[]>(this.endpoint);
   }
 
@@ -19,7 +20,7 @@ export class QuestionnaireService {
     return this.apiService.get<Questionnaire>(`${this.endpoint}/${id}`);
   }
 
-  createQuestionnaire(project: Questionnaire): Observable<Questionnaire> {
+  createQuestionnaire(project: Omit<Questionnaire, 'id' | 'created_at' | 'updated_at'>): Observable<Questionnaire> {
     return this.apiService.post<Questionnaire>(this.endpoint, project);
   }
 

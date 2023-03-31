@@ -12,6 +12,15 @@ async function createQuestionnaire(req, res) {
   }
 }
 
+async function getQuestionnaire(req, res) {
+  try {
+    const questionnaire = await questionnaireRepo.getById(req.params.id);
+    res.status(200).json(questionnaire)
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
 async function getAllQuestionnaires(req, res) {
   try {
     const questionnaires = await questionnaireRepo.getAll();
@@ -24,5 +33,6 @@ async function getAllQuestionnaires(req, res) {
 export const questionnaireController = {
   createQuestionnaire,
   getAllQuestionnaires,
+  getQuestionnaire
 };
 

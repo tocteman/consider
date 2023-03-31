@@ -17,8 +17,8 @@ app.use(session({
   saveUninitialized: false,
 }))
 
-app.use('/question', createQuestionRouter())
-app.use('/questionnaries', createQuestionnaireRouter())
+app.use('/questions', createQuestionRouter())
+app.use('/questionnaires', createQuestionnaireRouter())
 app.use('/projects', createProjectRouter())
 app.use('/user', createUserRouter())
 

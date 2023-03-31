@@ -4,7 +4,7 @@ import {AssignmentModel} from './assignment.model';
 import {QuestionModel} from './question.model';
 import {QuestionQuestionnaireRelationModel} from './question_questionnaire_relation.model';
 
-@Table({ tableName: 'questionnaires' })
+@Table({ tableName: 'questionnaires', timestamps: false })
 export class QuestionnaireModel extends Model implements Questionnaire {
   @PrimaryKey
   @Column({ type: DataType.INTEGER, autoIncrement: true })
@@ -19,11 +19,9 @@ export class QuestionnaireModel extends Model implements Questionnaire {
   @Column({ field: 'created_by', type: DataType.STRING })
   created_by: number;
 
-  @CreatedAt
   @Column({ field: 'created_at', type: DataType.DATE })
   created_at: Date;
 
-  @UpdatedAt
   @Column({ field: 'updated_at', type: DataType.DATE })
   updated_at: Date;
 

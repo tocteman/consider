@@ -12,7 +12,7 @@ import {
 import { UserModel } from './user.model';
 import { ProjectModel } from './project.model';
 
-@Table({ tableName: 'participations' })
+@Table({ tableName: 'participations', timestamps: false })
 export class ParticipationModel extends Model {
   @PrimaryKey
   @Column({ type: DataType.INTEGER, autoIncrement: true })
@@ -29,11 +29,9 @@ export class ParticipationModel extends Model {
   @Column(DataType.ENUM('client', 'teammate'))
   role: 'client' | 'teammate';
 
-  @CreatedAt
   @Column({ field: 'created_at', type: DataType.DATE })
   created_at: Date;
 
-  @UpdatedAt
   @Column({ field: 'updated_at', type: DataType.DATE })
   updated_at: Date;
 

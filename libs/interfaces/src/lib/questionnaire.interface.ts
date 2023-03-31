@@ -1,3 +1,5 @@
+import {Question} from "./question.interface";
+
 export interface Questionnaire {
   id: number; 
   name: string;
@@ -5,4 +7,5 @@ export interface Questionnaire {
   created_by: number; 
   created_at: Date; 
   updated_at: Date; 
+  questions?: Question[]
 }

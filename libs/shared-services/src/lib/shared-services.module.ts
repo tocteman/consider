@@ -4,12 +4,14 @@ import { ProjectService } from './project.service';
 import { ApiService } from './api.service';
 import {HttpClientModule} from '@angular/common/http';
 import {QuestionnaireService} from './questionnaire.service';
+import {QuestionService} from './question.service';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
   providers: [
     ApiService,
     ProjectService,
+    QuestionService,
     QuestionnaireService
   ],
   exports: [

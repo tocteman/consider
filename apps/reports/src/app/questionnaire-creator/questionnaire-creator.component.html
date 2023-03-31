@@ -1,62 +1,79 @@
-<p>questionnaire-creator works!</p>
-<form [formGroup]="questionnaireForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="fill">
-    <mat-label>Questionnaire Name</mat-label>
-    <input matInput formControlName="name" />
-  </mat-form-field>
+<main class="p-4 flex flex-col items-center justify-center">
+  <h2 class="text-2xl font-bold">Questionnaire Creator</h2>
+  <form [formGroup]="questionnaireForm" (ngSubmit)="onSubmit()" class="m-8 flex flex-col space-y-4 min-w-[40vw]">
+    <mat-form-field appearance="fill">
+      <mat-label>Questionnaire Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
 
-  <mat-form-field appearance="fill" *ngIf="projects.length > 0">
-    <mat-label>Project</mat-label>
-    <mat-select formControlName="project_id">
-      <mat-option *ngFor="let project of projects" [value]="project.id">{{ project.name }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field appearance="fill" *ngIf="projects.length > 0">
+      <mat-label>Project</mat-label>
+      <mat-select formControlName="project_id">
+        <mat-option *ngFor="let project of projects" [value]="project.id">{{ project.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
+    <mat-form-field appearance="fill">
+      <mat-label>Intended For</mat-label>
+      <mat-select formControlName="intended_for">
+        <mat-option [value]="'clients'">
+          Clients
+        </mat-option>
+        <mat-option [value]="'teammates'">
+          Team Members
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    
+    <div formArrayName="associatedQuestions">
+      <div *ngFor="let question of associatedQuestions.controls; index as i" [formGroupName]="i">
+        <ng-container *ngIf="questions.length > 0 && question.get('type')?.value === 'existing'">
+          <mat-form-field appearance="fill">
+            <mat-label>Select Question</mat-label>
+            <mat-select formControlName="question_id">
+              <mat-option *ngFor="let existingQuestion of questions" [value]="existingQuestion.id">
+                {{ existingQuestion.question }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-container>
 
-  <div formArrayName="questions">
-    <div *ngFor="let question of questions.controls; index as i" [formGroupName]="i">
-      <ng-container *ngIf="existingQuestionsList.length > 0 && question.get('type')?.value === 'existing'">
-        <mat-form-field appearance="fill">
-          <mat-label>Select Question</mat-label>
-          <mat-select formControlName="question_id">
-            <!-- Replace 'existingQuestionsList' with the actual list of existing questions -->
-            <mat-option *ngFor="let existingQuestion of existingQuestionsList" [value]="existingQuestion.id">
-              {{ existingQuestion.question }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </ng-container>
+        <ng-container *ngIf="question.get('type')?.value === 'new'">
+          <mat-form-field appearance="fill">
+            <mat-label>Input your question</mat-label>
+            <input matInput formControlName="question" />
+          </mat-form-field>
 
-      <ng-container *ngIf="question.get('type')?.value === 'new'">
-        <mat-form-field appearance="fill">
-          <mat-label>Input your question</mat-label>
-          <input matInput formControlName="question" />
-        </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Choose a response_type</mat-label>
+            <mat-select formControlName="response_type">
+              <mat-option value="numeric">Numeric</mat-option>
+              <mat-option value="string">String</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-container>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Choose a response_type</mat-label>
-          <mat-select formControlName="response_type">
-            <mat-option value="numeric">Numeric</mat-option>
-            <mat-option value="string">String</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </ng-container>
+        <button mat-icon-button (click)="removeQuestion(i)" type="button">
+          <mat-icon>remove_circle</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="flex flex-col space-y-2">
+      <div *ngIf="showAddQuestionForm" class="flex space-x-4">
+        <button mat-raised-button (click)="addQuestion('existing')" type="button">Existing</button>
+        <button mat-raised-button (click)="addQuestion('new')" type="button">New</button>
+      </div>
 
-      <button mat-icon-button (click)="removeQuestion(i)">
-        <mat-icon>remove_circle</mat-icon>
+      <button mat-raised-button (click)="showAddQuestionForm = !showAddQuestionForm" class="max-w-xs" type="button">
+        Add Question
       </button>
-  </div>
-</div>
-</form>
+    </div>
+    <hr>
+    <button mat-raised-button type="submit" color="primary" class="max-w-xs" size="large">
+      Enviar
+    </button>
+  </form>
 
-<button mat-raised-button (click)="showAddQuestionForm = !showAddQuestionForm">
-  Add Question
-</button>
 
-<div *ngIf="showAddQuestionForm">
-  <button mat-raised-button (click)="addQuestion('existing')">Existing</button>
-  <button mat-raised-button (click)="addQuestion('new')">New</button>
-</div>
 
+</main>

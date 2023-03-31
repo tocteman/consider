@@ -2,7 +2,7 @@ import { Column, CreatedAt, DataType, HasMany, Model, PrimaryKey, Table, Updated
 import { Project } from '@consider/interfaces'
 import { ParticipationModel } from './participation.model';
 
-@Table({ tableName: 'projects' })
+@Table({ tableName: 'projects', timestamps: false })
 export class ProjectModel extends Model implements Project{
   @PrimaryKey
   @Column({ type: DataType.INTEGER, autoIncrement: true })
@@ -35,11 +35,9 @@ export class ProjectModel extends Model implements Project{
   @Column({ field: 'end_date', type: DataType.DATE })
   end_date: Date;
 
-  @CreatedAt
   @Column({ field: 'created_at', type: DataType.DATE })
   created_at: Date;
 
-  @UpdatedAt
   @Column({ field: 'updated_at', type: DataType.DATE })
   updated_at: Date;
 

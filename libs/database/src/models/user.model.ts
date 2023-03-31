@@ -3,7 +3,7 @@ import { User } from '@consider/interfaces';
 import { AssignmentModel } from './assignment.model';
 import { ParticipationModel } from './participation.model';
 
-@Table({ tableName: 'users' })
+@Table({ tableName: 'users', timestamps: false })
 export class UserModel extends Model implements User {
   @PrimaryKey
   @Column({ type: DataType.INTEGER, autoIncrement: true })
@@ -24,11 +24,9 @@ export class UserModel extends Model implements User {
   @Column(DataType.STRING)
   phone: string;
 
-  @CreatedAt
   @Column({ field: 'created_at', type: DataType.DATE })
   created_at: Date;
 
-  @UpdatedAt
   @Column({ field: 'updated_at', type: DataType.DATE })
   updated_at: Date;
 
