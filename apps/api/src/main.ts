@@ -1,5 +1,6 @@
 import express from 'express';
-import { createHomeRouter, createProjectRouter, createQuestionRouter, createUserRouter } from './routes'
+import { createProjectRouter, createQuestionRouter, createUserRouter, createQuestionnaireRouter } from './routes'
+import cors from 'cors'
 import morgan from 'morgan'
 import session from 'express-session'
 
@@ -8,6 +9,7 @@ const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
 const app = express();
 app.use(morgan('combined'))
+app.use(cors())
 app.use(express.json())
 app.use(session({
   secret: 'secret-key',
@@ -15,9 +17,9 @@ app.use(session({
   saveUninitialized: false,
 }))
 
-app.use('/home', createHomeRouter())
 app.use('/question', createQuestionRouter())
-app.use('/project', createProjectRouter())
+app.use('/questionnaries', createQuestionnaireRouter())
+app.use('/projects', createProjectRouter())
 app.use('/user', createUserRouter())
 
 app.listen(port, host, () => {

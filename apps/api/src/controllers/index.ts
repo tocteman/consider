@@ -1,8 +1,8 @@
-import { homeController } from './homeController'
+import { questionnaireController } from './questionnaireController'
 import { questionController } from './questionController'
 import { projectController } from './projectController'
 import { userController } from './userController'
 
 export {
-  homeController, questionController, projectController, userController
+ questionnaireController, questionController, projectController, userController
 }

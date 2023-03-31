@@ -13,6 +13,9 @@ export class QuestionQuestionnaireRelationModel extends Model {
   @Column({ field: 'question_id', type: DataType.INTEGER })
   question_id: number;
 
+  @Column({ field: 'order', type: DataType.INTEGER})
+  order: number;
+
   @ForeignKey(() => QuestionnaireModel)
   @Column({ field: 'questionnaire_id', type: DataType.INTEGER })
   questionnaire_id: number;

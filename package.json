@@ -4,7 +4,11 @@
   "license": "MIT",
   "scripts": {
     "db:migrate": "ts-node -O '{\"module\":\"CommonJS\"}' node_modules/.bin/sequelize db:migrate",
-    "db:seed": "ts-node -O '{\"module\":\"CommonJS\"}' node_modules/.bin/sequelize db:seed:all"
+    "db:seed": "ts-node -O '{\"module\":\"CommonJS\"}' node_modules/.bin/sequelize db:seed:all",
+    "start:surveys": "nx run surveys:serve:development",
+    "start:reports": "nx run reports:serve:development --port=4400 --open",
+    "start:api": "nx serve api",
+    "serve:all": "concurrently \"npm run start:surveys\" \"npm run start:reports\" \"npm run start:api\""
   },
   "private": true,
   "dependencies": {
@@ -24,6 +28,7 @@
     "@types/sqlite3": "^3.1.8",
     "axios": "^1.0.0",
     "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "express": "~4.18.1",
     "express-session": "^1.17.3",
     "morgan": "^1.10.0",
@@ -62,6 +67,7 @@
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "autoprefixer": "^10.4.0",
+    "concurrently": "^8.0.1",
     "cypress": "^12.2.0",
     "esbuild": "^0.17.5",
     "eslint": "~8.15.0",

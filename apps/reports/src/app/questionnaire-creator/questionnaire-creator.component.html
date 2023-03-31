@@ -1,0 +1,62 @@
+<p>questionnaire-creator works!</p>
+<form [formGroup]="questionnaireForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Questionnaire Name</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="projects.length > 0">
+    <mat-label>Project</mat-label>
+    <mat-select formControlName="project_id">
+      <mat-option *ngFor="let project of projects" [value]="project.id">{{ project.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+    
+
+  <div formArrayName="questions">
+    <div *ngFor="let question of questions.controls; index as i" [formGroupName]="i">
+      <ng-container *ngIf="existingQuestionsList.length > 0 && question.get('type')?.value === 'existing'">
+        <mat-form-field appearance="fill">
+          <mat-label>Select Question</mat-label>
+          <mat-select formControlName="question_id">
+            <!-- Replace 'existingQuestionsList' with the actual list of existing questions -->
+            <mat-option *ngFor="let existingQuestion of existingQuestionsList" [value]="existingQuestion.id">
+              {{ existingQuestion.question }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+
+      <ng-container *ngIf="question.get('type')?.value === 'new'">
+        <mat-form-field appearance="fill">
+          <mat-label>Input your question</mat-label>
+          <input matInput formControlName="question" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a response_type</mat-label>
+          <mat-select formControlName="response_type">
+            <mat-option value="numeric">Numeric</mat-option>
+            <mat-option value="string">String</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+
+      <button mat-icon-button (click)="removeQuestion(i)">
+        <mat-icon>remove_circle</mat-icon>
+      </button>
+  </div>
+</div>
+</form>
+
+<button mat-raised-button (click)="showAddQuestionForm = !showAddQuestionForm">
+  Add Question
+</button>
+
+<div *ngIf="showAddQuestionForm">
+  <button mat-raised-button (click)="addQuestion('existing')">Existing</button>
+  <button mat-raised-button (click)="addQuestion('new')">New</button>
+</div>
+

@@ -10,6 +10,7 @@ import {QuestionModel} from './models/question.model';
 import {QuestionnaireModel} from './models/questionnaire.model';
 import {AnswerModel} from './models/answer.model';
 import {QuestionQuestionnaireRelationModel} from './models/question_questionnaire_relation.model';
+import {QuestionnaireRepository} from './repos/questionnaire.repository';
 
 const environment = process.env.NODE_ENV || 'development';
 const config = databaseConfig[environment];
@@ -42,8 +43,14 @@ function createUsersRepository(): UserRepository {
   repo['sequelize'] = sequelize;
   return repo;
 }
+function createQuestionnaireRepository(): QuestionnaireRepository {
+  const repo = new QuestionnaireRepository()
+  repo['sequelize'] = sequelize
+  return repo
+}
 
 export {
   createProjectRepository,
-  createUsersRepository
+  createUsersRepository,
+  createQuestionnaireRepository
 }

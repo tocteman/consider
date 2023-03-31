@@ -19,8 +19,6 @@ export class QuestionModel extends Model implements Question {
   @Column({ field: 'intended_for', type: DataType.ENUM('clients', 'teammates', 'general') })
   intended_for: 'clients' | 'teammates' | 'general';
 
-  @Column(DataType.INTEGER)
-  order: number;
   @ForeignKey(() => UserModel)
   @Column({ field: 'created_by', type: DataType.INTEGER })
   created_by: number;

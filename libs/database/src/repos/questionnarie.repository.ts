@@ -6,24 +6,34 @@ import { QuestionQuestionnaireRelationModel } from '../models/question_questionn
 
 export class QuestionnaireRepository {
 
-  async create(input: Questionnaire & { questions?: number[] }): Promise<QuestionnaireModel> {
+  async create(input: Questionnaire & { questions?: (number | { content: string })[] }): Promise<QuestionnaireModel> {
     const { questions, ...questionnaire } = input;
     const createdQuestionnaire = await QuestionnaireModel.create(questionnaire);
 
-     const user = await UserModel.findByPk(questionnaire.created_by);
-  if (!user || user.type !== 'manager') {
-    throw new Error('Only managers can create questionnaires.');
-  }
+    const user = await UserModel.findByPk(questionnaire.created_by);
+    if (!user || user.type !== 'manager') {
+      throw new Error('Only managers can create questionnaires.');
+    }
 
     if (questions && questions.length > 0) {
-      await createdQuestionnaire.$set('questions', questions);
-      const relations = questions.map((questionId) => ({
+      const questionIds = [];
+
+      for (const question of questions) {
+        if (typeof question === 'number') {
+          questionIds.push(question);
+        } else {
+          const createdQuestion = await QuestionModel.create(question);
+          questionIds.push(createdQuestion.id);
+        }
+      }
+
+      await createdQuestionnaire.$set('questions', questionIds);
+      const relations = questionIds.map((questionId) => ({
         question_id: questionId,
         questionnaire_id: createdQuestionnaire.id,
       }));
       await QuestionQuestionnaireRelationModel.bulkCreate(relations);
     }
-
     return createdQuestionnaire;
   }
 

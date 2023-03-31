@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { TextChangerComponent } from './text-changer/text-changer.component';
 import {reducer} from '@consider/state';
+import {SharedServicesModule} from '@consider/shared-services';
 
 @NgModule({
   declarations: [AppComponent, TextChangerComponent],
@@ -17,6 +18,7 @@ import {reducer} from '@consider/state';
     BrowserModule,
     CommonUiModule,
     MaterialModule,
+    SharedServicesModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     StoreModule.forRoot({ button: reducer})
     

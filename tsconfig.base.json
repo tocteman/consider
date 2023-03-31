@@ -21,6 +21,7 @@
       "@consider/interfaces": ["libs/interfaces/src/index.ts"],
       "@consider/material": ["libs/material/src/index.ts"],
       "@consider/projects": ["libs/projects/src/index.ts"],
+      "@consider/shared-services": ["libs/shared-services/src/index.ts"],
       "@consider/state": ["libs/state/src/index.ts"]
     }
   },
