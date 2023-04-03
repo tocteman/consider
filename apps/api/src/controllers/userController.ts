@@ -17,6 +17,8 @@ async function signIn(req, res) {
     // You can store user data in session or send it as a JWT
     const sessionedUser = { id: user.id, email: user.email, type: user.type };
     req.session.user = sessionedUser
+    req.session.authenticated = true
+    req.session.isAuthenticated = true
 
     res.status(200).json(sessionedUser);
   } catch (error) {
@@ -45,9 +47,17 @@ async function signOut(req, res) {
   res.status(200).json({ message: 'Signed out successfully' });
 }
 
+async function checkAuth(req, res) {
+  if (req.session && req.session.cookie && req.session.isAuthenticated) {
+    res.status(200).json({isAuthenticated: true})
+  } else {
+    res.status(200).json({isAuthenticated: false})
+  }
+}
 export const userController = {
   signIn,
   signOut,
-  signUp
+  signUp,
+  checkAuth
 };
 

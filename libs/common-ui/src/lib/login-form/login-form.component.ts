@@ -1,6 +1,7 @@
 import {Location} from '@angular/common';
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 import {UserService} from '@consider/shared-services';
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginFormComponent {
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
-    private location: Location
+    private location: Location,
+    private router: Router
   ){
     this.loginForm = this.fb.group({
       email: this.fb.control('', Validators.email),
@@ -25,8 +27,9 @@ export class LoginFormComponent {
     const { email, password } = this.loginForm.value
     this.userService.signIn({email, password})
     .subscribe(res => {
-        const cookies = 
-        this.location.go("/questionnaires")
+        if (res.ok) {
+          this.router.navigate(["questionnaires"])
+        }
       })
   }
 }

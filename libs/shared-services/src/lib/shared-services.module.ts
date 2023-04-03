@@ -2,12 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectService } from './project.service';
 import { ApiService } from './api.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import {QuestionnaireService} from './questionnaire.service';
 import {QuestionService} from './question.service';
 
 @NgModule({
-  imports: [CommonModule, HttpClientModule],
+  imports: [
+    CommonModule, 
+    HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'connect.sid'
+    })
+  ],
   providers: [
     ApiService,
     ProjectService,

@@ -9,12 +9,15 @@ const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
 const app = express();
 app.use(morgan('combined'))
-app.use(cors())
 app.use(express.json())
 app.use(session({
   secret: 'secret-key',
-  resave: true,
+  resave: false,
   saveUninitialized: false,
+}))
+app.use(cors({
+  origin: ['http://localhost:4200', 'http://localhost:4400'],
+  credentials: true
 }))
 
 app.use('/questions', createQuestionRouter())
