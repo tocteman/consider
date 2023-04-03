@@ -1,6 +1,6 @@
 import { createUsersRepository } from '@consider/database';
 import { User } from '@consider/interfaces';
-import bcrypt from 'bcrypt';
+import { compare } from 'bcryptjs';
 
 const usersRepo = createUsersRepository();
 
@@ -10,7 +10,7 @@ async function signIn(req, res) {
   try {
     const user = await usersRepo.getByEmail(email);
 
-    if (!user || !(await bcrypt.compare(password, user.password))) {
+    if (!user || !(await compare(password, user.password))) {
       return res.status(401).json({ error: 'Invalid email or password' });
     }
 

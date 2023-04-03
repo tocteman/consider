@@ -1,12 +1,12 @@
 import { UserModel } from '../models/user.model';
 import { User } from '@consider/interfaces';
-import bcrypt from 'bcrypt'
+import { hash, genSalt } from 'bcryptjs'
 
 export class UserRepository {
   async create(user: Omit<User, 'id' | 'created_at' | 'updated_at'>): Promise<UserModel> {
 
-    const salt = await bcrypt.genSalt(10)
-    const hashedPassword = await bcrypt.hash(user.password, salt)
+    const salt = await genSalt(10)
+    const hashedPassword = await hash(user.password, salt)
     const newUser = {...user, password: hashedPassword}
     return UserModel.create(newUser);
   }
