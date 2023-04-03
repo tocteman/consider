@@ -8,8 +8,8 @@ import {LoginFormComponent} from 'libs/common-ui/src/lib/login-form/login-form.c
 
 const routes: Routes = [
   { path: 'login', component: LoginFormComponent},
-  { path: 'questionnaires', component: QuestionnaireListComponent , },
-  { path: '',  children: [
+  { path: 'questionnaires', component: QuestionnaireListComponent , canActivate: [CookieGuard]},
+  { path: '', canActivate: [CookieGuard], children: [
     {
       path: "",
       pathMatch: 'full',
