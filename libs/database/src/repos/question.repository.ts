@@ -13,6 +13,7 @@ export class QuestionRepository {
     }
 
     const newQuestion = await QuestionModel.create(question);
+
     return newQuestion.get();
   }
 

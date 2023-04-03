@@ -3,6 +3,7 @@ import { QuestionnaireModel } from '../models/questionnaire.model';
 import { QuestionModel } from '../models/question.model';
 import { UserModel } from '../models/user.model';
 import { QuestionQuestionnaireRelationModel } from '../models/question_questionnaire_relation.model'
+import {QuestionRepository} from './question.repository';
 
 export class QuestionnaireRepository {
 
@@ -17,12 +18,13 @@ export class QuestionnaireRepository {
 
     if (questions && questions.length > 0) {
       const questionIds = [];
+      const questionRepo = new QuestionRepository()
 
       for (const question of questions) {
         if (typeof question === 'number') {
           questionIds.push(question);
         } else {
-          const createdQuestion = await QuestionModel.create(question);
+          const createdQuestion = await questionRepo.create(question)
           questionIds.push(createdQuestion.id);
         }
       }
