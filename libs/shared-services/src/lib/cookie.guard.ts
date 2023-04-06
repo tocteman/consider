@@ -17,7 +17,6 @@ export class CookieGuard implements CanActivate {
 
     return this.userService.checkAuth().pipe(
       map(response => {
-        console.log({response})
         if (response.isAuthenticated) {
           return true
         } else {

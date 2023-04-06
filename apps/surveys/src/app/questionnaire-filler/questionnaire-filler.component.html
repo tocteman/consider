@@ -24,6 +24,12 @@
       </ng-container>
     </div>
   </div>
+  <app-file-upload 
+  (fileUploaded)="onFileUpload($event)" 
+  (urlChanged)="onUrlChange($event)" >
+  </app-file-upload>
+
+  <mat-spinner *ngIf="uploadInProgress"> </mat-spinner>
 
   <button mat-raised-button type="submit" color="primary" class="max-w-xs" size="large">
     Enviar

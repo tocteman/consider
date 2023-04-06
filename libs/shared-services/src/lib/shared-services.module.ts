@@ -5,6 +5,11 @@ import { ApiService } from './api.service';
 import {HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import {QuestionnaireService} from './questionnaire.service';
 import {QuestionService} from './question.service';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import {StorageService} from './storage.service';
+// import { environment } from '../environments/environment';
+import { sharedEnvironment } from '@consider/shared-environments'
 
 @NgModule({
   imports: [
@@ -12,13 +17,16 @@ import {QuestionService} from './question.service';
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'connect.sid'
-    })
+    }),
+    AngularFireModule.initializeApp(sharedEnvironment.firebase),
+    AngularFireStorageModule
   ],
   providers: [
     ApiService,
     ProjectService,
     QuestionService,
-    QuestionnaireService
+    QuestionnaireService,
+    StorageService
   ],
   exports: [
     HttpClientModule,

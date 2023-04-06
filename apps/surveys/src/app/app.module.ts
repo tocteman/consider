@@ -12,6 +12,7 @@ import { SharedServicesModule } from '@consider/shared-services';
 import { QuestionnaireFillerComponent } from './questionnaire-filler/questionnaire-filler.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { QuestionnaireListComponent } from './questionnaire-list/questionnaire-list.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { QuestionnaireListComponent } from './questionnaire-list/questionnaire-l
     TextChangerComponent,
     QuestionnaireFillerComponent,
     QuestionnaireListComponent,
+    FileUploadComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -28,7 +30,8 @@ import { QuestionnaireListComponent } from './questionnaire-list/questionnaire-l
     SharedServicesModule,
     ReactiveFormsModule,
     StoreModule.forRoot({ button: reducer }),
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

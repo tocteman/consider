@@ -12,7 +12,6 @@ export class QuestionnaireService {
   constructor(private apiService: ApiService) {}
 
   getQuestionnaires(): Observable<Questionnaire[]> {
-    console.log(this.endpoint)
     return this.apiService.get<Questionnaire[]>(this.endpoint);
   }
 

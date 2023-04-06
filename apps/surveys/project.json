@@ -6,7 +6,7 @@
   "prefix": "consider",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/surveys",
@@ -19,7 +19,11 @@
           "@angular/material/prebuilt-themes/deeppurple-amber.css",
           "apps/surveys/src/styles.css"
         ],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "./webpack-config.js"
+        }
+
       },
       "configurations": {
         "production": {
@@ -49,7 +53,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nrwl/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "surveys:build:production"
