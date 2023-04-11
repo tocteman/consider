@@ -8,7 +8,6 @@ import {QuestionService} from './question.service';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import {StorageService} from './storage.service';
-// import { environment } from '../environments/environment';
 import { sharedEnvironment } from '@consider/shared-environments'
 
 @NgModule({
